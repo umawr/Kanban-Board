@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <title>Kanban Board</title>
   </head>
 
@@ -11,25 +15,40 @@
     <div class="center">
       <div class="lists">
         <div class="to-do">
-          <p class="heading">To do</p>
-          <div class="task">take out the trash</div>
-          <div class="task">buy groceries</div>
-          <div class="task">complete odyssey</div>
-          <div class="task">magnets</div>
+          <div class="heading-container">
+            <span class="material-symbols-outlined icon">
+              clock_loader_10
+            </span>
+            <p class="heading">To do</p>
+            <p class="number">#1</p>
+          </div>
+          <div class="task">
+            <div class="up-bar">
+              <p class="task-number">1.</p>
+              <span class="material-symbols-outlined icon">delete</span>
+            </div>
+            <p>take out the trash</p>
+          </div>
         </div>
         <div class="in-progress">
-          <p class="heading">In progress</p>
+          <div class="heading-container">
+            <span class="material-symbols-outlined icon">
+              clock_loader_40
+            </span>
+            <p class="heading">In progress</p>
+            <p class="number">#1</p>
+          </div>
           <div class="task">wash car</div>
-          <div class="task">arrange books</div>
-          <div class="task">nothing</div>
-          <div class="task">refill station</div>
-          <div class="task">printer shop</div>
-          <div class="task">eight</div>
         </div>
         <div class="completed">
-          <p class="heading">Completed</p>
+          <div class="heading-container">
+            <span class="material-symbols-outlined icon">
+              clock_loader_90
+            </span>
+            <p class="heading">Completed</p>
+            <p class="number">#1</p>
+          </div>
           <div class="task">book tickets</div>
-          <div class="task">update repository</div>
         </div>
       </div>
     </div>
