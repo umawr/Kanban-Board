@@ -1,0 +1,19 @@
+*{
+  background-color: black;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+.center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.to-do,
+.in-progress,
+.completed{
+  display: flex;
+  flex: 1;
+}
