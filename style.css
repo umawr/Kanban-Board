@@ -1,75 +1,184 @@
 :root {
-  --background-color: #141414;
-  --font-color: #dbdbdb;
-  --lists-color: #201e1f;
-  --task-color: #292728;
+  /* Dark Mode */
+
+  --color-1: #101010;
+  --color-2: #131312;
+  --color-3: #1C1C1B;
+  --color-4: #C6C8CB;
+  --color-5: #EBFAFC;
+
+  /* Light Mode */
+
+  /* --color-1: #fcfefe; 
+  --color-2: #F8FAFA; 
+  --color-3: #F0F3F3;
+  --color-4: #45484b; 
+  --color-5: #0f1416; */
+
+  --radius-sm: 0.2rem;
+  --radius-md: 0.3rem;
+  --radius-lg: 0.5rem;
+
+  --spacing-sm: 0.3rem;
+  --spacing-md: 0.5rem;
+  --spacing-lg: 0.6rem;
+
+  --font-sm: 0.2rem;
+  --font-md: 0.7rem;
+  --font-lg: 0.9rem;
 }
+
+/* Global Styles */
 * {
-  color: var(--font-color);
   padding: 0;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
-.center {
-  background-color: var(--background-color);
+
+/* Layout & Containers */
+.center,
+.lists,
+.to-do,
+.in-progress,
+.completed,
+.task,
+.up-bar,
+.heading-container,
+.activity-bar,
+.time-bar,
+.trash-button,
+.flag-button {
   display: flex;
+}
+
+.center {
+  background-color: var(--color-1);
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 0;
 }
-/* Lists and Tasks */
+
 .lists {
-  background: var(--background-color);
-  display: flex;
-  gap: 10px;
-  border-radius: 12px;
-  padding: 10px;
+  background: transparent;
+  gap: var(--spacing-md);
   width: 50%;
 }
+
 .to-do,
 .in-progress,
 .completed {
-  background-color: var(--lists-color);
+  background-color: var(--color-2);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   flex: 1;
-  display: flex;
   flex-direction: column;
   height: fit-content;
-  padding: 10px;
-  border-radius: 0.5rem;
-  gap: 10px;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  gap: var(--spacing-lg);
 }
+
 .task {
-  background-color: var(--task-color);
+  background-color: var(--color-3);
   font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  display: flex;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
   flex-direction: column;
 }
-.up-bar{
-  display: flex;
+
+/* Header & Bars */
+.up-bar,
+.activity-bar {
   justify-content: space-between;
 }
-.heading-container{
-  display: flex;
-  gap: 0.5rem;
+
+.heading-container {
+  gap: var(--spacing-md);
   align-items: center;
 }
-.heading {
-  font-size: 0.8rem;
-}
-.icon{
-  font-size: 1.2rem !important;
-}
-.number{
-  background-color: var(--task-color);
-  font-size: 0.8rem;
+
+.time-bar {
+  align-items: center;
+  gap: 0.3rem;
+  background-color: var(--lists-color);
+  border-radius: var(--radius-sm);
   padding: 0.2rem;
-  border-radius: 0.3rem;
+  color: var(--color-5);
 }
-.task-number{
-  font-size: 0.8rem ;
+.text {
+  padding: var(--spacing-sm);
+}
+.activity-bar {
+  padding-top: var(--spacing-sm);
+}
+.up-bar {
+  padding-bottom: var(--spacing-sm);
+}
+/* Typography */
+.heading {
+  font-size: var(--font-md);
+  color: var(--color-5);
+}
+
+.icon {
+  font-size: 1rem !important;
+  color: var(--color-4);
+}
+
+.number {
+  background-color: var(--color-3);
+  border-radius: var(--radius-md);
+}
+
+.number,
+.task-number,
+.activity-bar,
+.time-bar {
+  font-size: var(--font-md);
+}
+
+.number,
+.time {
+  color: var(--color-4);
+}
+
+.number {
+  padding: var(--spacing-sm);
+}
+
+.task-number,
+.text,
+.time-bar {
+  color: var(--color-5);
+}
+
+.text {
+  font-size: var(--font-lg);
+}
+.add-button {
+  color: var(--color-4);
+  font-size: var(--font-md);
+}
+
+/* Interactive Elements */
+.trash-button,
+.flag-button,
+.add-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.trash-button:hover,
+.flag-button:hover,
+.add-button:hover {
+  cursor: pointer;
+}
+
+.trash-button:active,
+.flag-button:active,
+.add-button:active {
+  outline: none;
+  opacity: 0.5;
+  border: none;
 }
