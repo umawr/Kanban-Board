@@ -12,15 +12,13 @@ const containers = {
   completed: document.querySelector('.completed'),
 };
 
-let taskCount = 0;
-
-function createTaskElement(number) {
+function createTaskElement() {
   const newTask = document.createElement('div');
   newTask.classList.add('task');
 
   newTask.innerHTML = `
                 <div class="up-bar">
-                  <p class="task-number">${number}.</p>
+                   <p class="task-number">.</p>
                   <button class="trash-button">
                     <span class="material-symbols-outlined icon">delete</span>
                   </button>
@@ -37,14 +35,18 @@ function createTaskElement(number) {
                 </div>
             `;
 
+  const trashButton = newTask.querySelector('.trash-button');
+
+  trashButton.addEventListener('click', () => {
+    newTask.remove();
+  });
+
   return newTask;
 }
 
 function addTask(container) {
-  taskCount++;
-  const newTask = createTaskElement(taskCount);
+  const newTask = createTaskElement();
   container.appendChild(newTask);
-  document.querySelector('.number').innerHTML = `#${taskCount}`;
 }
 
 addButtons.toDo.addEventListener('click', () => addTask(containers.toDo));
@@ -54,3 +56,17 @@ addButtons.inProgress.addEventListener('click', () =>
 addButtons.completed.addEventListener('click', () =>
   addTask(containers.completed),
 );
+
+setupCounter('.add-button-to-do', '.numberToDo');
+setupCounter('.add-button-completed', '.numberCompleted');
+setupCounter('.add-button-in-progress', '.numberInProgress');
+
+function setupCounter(buttonSelector, numberSelector) {
+  const button = document.querySelector(buttonSelector);
+  const numberDisplay = document.querySelector(numberSelector);
+  let count = 0;
+  button.addEventListener('click', function () {
+    count += 1;
+    numberDisplay.textContent = `#${count}`;
+  });
+}
