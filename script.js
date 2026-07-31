@@ -25,7 +25,7 @@ const counts = {
 };
 
 function updateDisplay(category) {
-  numberDisplays[category].textContent = `#${counts[category]}`;
+  numberDisplays[category].textContent = `${counts[category]}`;
 }
 
 function createTaskElement(category) {
@@ -47,18 +47,18 @@ function createTaskElement(category) {
       </button>
       <div class="time-bar">
         <span class="material-symbols-outlined icon">alarm</span>
-        <p class="time">12:00 PM</p>
+        <p class="time">12:00 PM, 2nd July</p>
       </div>
     </div>
   `;
 
   const textEntered = newTask.querySelector('.text');
-  
-  textEntered.addEventListener('input', function(){
+
+  textEntered.addEventListener('input', function () {
     this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 'px'
-  })
-  
+    this.style.height = this.scrollHeight + 'px';
+  });
+
   const trashButton = newTask.querySelector('.trash-button');
 
   trashButton.addEventListener('click', () => {
@@ -66,18 +66,24 @@ function createTaskElement(category) {
     counts[category] = Math.max(0, counts[category] - 1);
     updateDisplay(category);
   });
-  
+
   return newTask;
+
 }
 
+const toggleButton = document.querySelector('.toggle-button');
 
+toggleButton.addEventListener('click', () => {
+  document.body.classList.toggle('invert-color');
 
+  const isDark = document.body.classList.contains('invert-color');
+});
 
 Object.keys(addButtons).forEach(category => {
   addButtons[category].addEventListener('click', () => {
     const task = createTaskElement(category);
     containers[category].appendChild(task);
-    
+
     counts[category] += 1;
     updateDisplay(category);
   });
