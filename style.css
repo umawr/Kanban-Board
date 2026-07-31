@@ -1,30 +1,19 @@
 html {
-  font-size: 87%;
+  font-size: 81%;
   /* Chart for sizing: 
   100% => 16px
   93% ~> 15px
   87% ~> 14px
-  85% => 13.6px
   81% ~> 13px
   75% => 12px
    */
 }
 :root {
-  /* Dark Mode */
-
-  --color-1: #0f0f0f;
+  --color-1: #0d0d0d;
   --color-2: #131312;
   --color-3: #1c1c1b;
   --color-4: #c6c8cb;
   --color-5: #ebfafc;
-
-  /* Light Mode */
-
-  /* --color-1: #f0f0f0;
-  --color-2: #ececed;
-  --color-3: #e3e3e4;
-  --color-4: #393734;
-  --color-5: #140503; */
 
   --radius-sm: 0.2rem;
   --radius-md: 0.3rem;
@@ -41,14 +30,21 @@ html {
   --font-lg: 0.9rem;
 }
 
+.invert-color {
+  --color-1: #f2f2f2;
+  --color-2: #ececed;
+  --color-3: #e3e3e4;
+  --color-4: #393734;
+  --color-5: #140503;
+}
+
 /* Global Styles */
 * {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
-    letter-spacing: 0.03rem;
-
+  letter-spacing: 0.03rem;
 }
 
 /* Layout & Containers */
@@ -72,6 +68,7 @@ html {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  position: relative;
 }
 
 .lists {
@@ -182,7 +179,9 @@ html {
 /* Interactive Elements */
 .trash-button,
 .flag-button,
-.add-button {
+.add-button,
+.toggle-button,
+.ratio-button {
   background-color: transparent;
   outline: none;
   border: none;
@@ -192,13 +191,17 @@ html {
 
 .trash-button:hover,
 .flag-button:hover,
-.add-button:hover {
+.add-button:hover,
+.toggle-button:hover,
+.ratio-button:hover {
   cursor: pointer;
 }
 
 .trash-button:active,
 .flag-button:active,
-.add-button-to-do:active {
+.add-button:active,
+.toggle-button:active,
+.ratio-button:active {
   outline: none;
   opacity: 0.5;
   border: none;
@@ -212,4 +215,16 @@ html {
 }
 .text:focus {
   outline: none;
+}
+.toggle-button {
+  position: absolute;
+  z-index: 10;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+}
+.ratio-button {
+  position: absolute;
+  z-index: 10;
+  top: var(--spacing-lg);
+  left: var(--spacing-lg);
 }
