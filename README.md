@@ -1,2 +1,2 @@
 # Nazar  
-view in Urdu
+meaning view in Urdu
