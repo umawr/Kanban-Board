@@ -125,6 +125,7 @@ html {
   padding-top: var(--spacing-md);
   padding-left: var(--spacing-sm);
   align-items: center;
+  /* position: relative; */
 }
 .up-bar {
   padding-bottom: var(--spacing-sm);
@@ -190,8 +191,8 @@ html {
   background-color: transparent;
   outline: none;
   border: none;
-  padding: var(--spacing-sm);
-  margin: var(--spacing-sm-neg);
+  padding: var(--spacing-md);
+  margin: var(--spacing-md-neg);
 }
 
 .trash-button:hover,
