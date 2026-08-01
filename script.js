@@ -28,14 +28,20 @@ function updateDisplay(category) {
   numberDisplays[category].textContent = `${counts[category]}`;
 }
 
-// Global renumbering function across all cards currently in the DOM
+// Renumbers cards independently per column
 function renumberCards() {
-  const allCards = document.querySelectorAll('.task');
-  allCards.forEach((card, index) => {
-    const numberElement = card.querySelector('.task-number');
-    if (numberElement) {
-      numberElement.textContent = `${index + 1}.`;
-    }
+  Object.keys(containers).forEach(category => {
+    const container = containers[category];
+    if (!container) return;
+
+    const columnCards = container.querySelectorAll('.task');
+    
+    columnCards.forEach((card, index) => {
+      const numberElement = card.querySelector('.task-number');
+      if (numberElement) {
+        numberElement.textContent = `${index + 1}.`;
+      }
+    });
   });
 }
 
