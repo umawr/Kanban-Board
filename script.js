@@ -45,9 +45,9 @@ function createTaskElement(category) {
       <button class="flag-button">
         <span class="material-symbols-outlined icon">flag</span>
       </button>
-      <div class="time-bar">
+      <div class="date-bar">
         <span class="material-symbols-outlined icon">alarm</span>
-        <p class="time">12:00 PM, 2nd July</p>
+        <textarea class="date" rows ="1" placeholder ="4 Oct"></textarea>
       </div>
     </div>
   `;
@@ -68,7 +68,6 @@ function createTaskElement(category) {
   });
 
   return newTask;
-
 }
 
 const toggleButton = document.querySelector('.toggle-button');
