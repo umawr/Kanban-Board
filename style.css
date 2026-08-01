@@ -57,7 +57,7 @@ html {
 .up-bar,
 .heading-container,
 .activity-bar,
-.time-bar,
+.date-bar,
 .trash-button,
 .flag-button {
   display: flex;
@@ -114,17 +114,17 @@ html {
   align-items: center;
 }
 
-.time-bar {
+.date-bar {
   align-items: center;
-  gap: 0.3rem;
-  background-color: var(--lists-color);
+  gap: var(--spacing-sm);
   border-radius: var(--radius-sm);
-  padding: 0.2rem;
+  padding: var(--spacing-sm);
   color: var(--color-5);
 }
 .activity-bar {
   padding-top: var(--spacing-md);
   padding-left: var(--spacing-sm);
+  align-items: center;
 }
 .up-bar {
   padding-bottom: var(--spacing-sm);
@@ -149,12 +149,12 @@ html {
 .number,
 .task-number,
 .activity-bar,
-.time-bar {
+.date-bar {
   font-size: var(--font-md);
 }
 
 .number,
-.time {
+.date {
   color: var(--color-4);
 }
 
@@ -164,12 +164,17 @@ html {
 
 .task-number,
 .text,
-.time-bar {
+.date-bar {
   color: var(--color-5);
 }
 
 .text {
   font-size: var(--font-lg);
+}
+.date {
+  font-size: var(--font-md);
+  field-sizing: content;
+  margin-left: auto;
 }
 .add-button {
   color: var(--color-4);
@@ -206,14 +211,16 @@ html {
   opacity: 0.5;
   border: none;
 }
-.text {
+.text,
+.date {
+  background-color: var(--color-3);
   padding: var(--spacing-sm);
   cursor: text;
   border: none;
-  background-color: var(--color-3);
   resize: none;
 }
-.text:focus {
+.text:focus,
+.date:focus {
   outline: none;
 }
 .toggle-button {
