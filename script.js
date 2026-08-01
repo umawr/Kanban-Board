@@ -28,6 +28,17 @@ function updateDisplay(category) {
   numberDisplays[category].textContent = `${counts[category]}`;
 }
 
+// Global renumbering function across all cards currently in the DOM
+function renumberCards() {
+  const allCards = document.querySelectorAll('.task');
+  allCards.forEach((card, index) => {
+    const numberElement = card.querySelector('.task-number');
+    if (numberElement) {
+      numberElement.textContent = `${index + 1}.`;
+    }
+  });
+}
+
 function createTaskElement(category) {
   const newTask = document.createElement('div');
   newTask.classList.add('task');
@@ -35,7 +46,7 @@ function createTaskElement(category) {
 
   newTask.innerHTML = `
     <div class="up-bar">
-       <p class="task-number">1.</p>
+       <p class="task-number"></p>
       <button class="trash-button">
         <span class="material-symbols-outlined icon">delete</span>
       </button>
@@ -47,43 +58,48 @@ function createTaskElement(category) {
       </button>
       <div class="date-bar">
         <span class="material-symbols-outlined icon">alarm</span>
-        <textarea class="date" rows ="1" placeholder ="4 Oct"></textarea>
+        <textarea class="date" rows="1" placeholder="4 Oct"></textarea>
       </div>
     </div>
   `;
 
+  // Auto-resize textarea logic
   const textEntered = newTask.querySelector('.text');
-
   textEntered.addEventListener('input', function () {
     this.style.height = 'auto';
     this.style.height = this.scrollHeight + 'px';
   });
 
-  const trashButton = newTask.querySelector('.trash-button');
-
-  trashButton.addEventListener('click', () => {
+  // Single combined delete button listener
+  const deleteButton = newTask.querySelector('.trash-button');
+  deleteButton.addEventListener('click', () => {
     newTask.remove();
     counts[category] = Math.max(0, counts[category] - 1);
     updateDisplay(category);
+    renumberCards(); // Update task numbers after removal
   });
 
   return newTask;
 }
 
+// Dark Mode Toggle
 const toggleButton = document.querySelector('.toggle-button');
-
-toggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('invert-color');
-
-  const isDark = document.body.classList.contains('invert-color');
-});
-
-Object.keys(addButtons).forEach(category => {
-  addButtons[category].addEventListener('click', () => {
-    const task = createTaskElement(category);
-    containers[category].appendChild(task);
-
-    counts[category] += 1;
-    updateDisplay(category);
+if (toggleButton) {
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('invert-color');
   });
+}
+
+// Add Task Button Handlers
+Object.keys(addButtons).forEach(category => {
+  if (addButtons[category]) {
+    addButtons[category].addEventListener('click', () => {
+      const task = createTaskElement(category);
+      containers[category].appendChild(task);
+
+      counts[category] += 1;
+      updateDisplay(category);
+      renumberCards(); // Update task numbers when new card is added
+    });
+  }
 });
