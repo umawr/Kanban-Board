@@ -1,6 +1,6 @@
 # Nazar  
 (meaning view in Urdu)  
-My most clean design yet, I'm really proud of my CSS work,  
+This is my cleanest design yet, and I'm really proud of my CSS work,  
 I still need to learn a lot of JavaScript because this project took a  
 lot of help.
 Currently the button at the top left corner doesn't do anything but  
