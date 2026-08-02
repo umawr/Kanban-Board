@@ -1,5 +1,5 @@
 html {
-  font-size: 81%;
+  font-size: 75%;
   /* Chart for sizing: 
   100% => 16px
   93% ~> 15px
@@ -171,6 +171,8 @@ html {
 
 .text {
   font-size: var(--font-lg);
+  display: block;
+  width: 100%;
 }
 .date {
   font-size: var(--font-md);
@@ -235,4 +237,9 @@ html {
   z-index: 10;
   top: var(--spacing-lg);
   left: var(--spacing-lg);
+}
+.card {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: grab;
 }
