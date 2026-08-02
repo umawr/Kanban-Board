@@ -35,7 +35,7 @@ function renumberCards() {
     if (!container) return;
 
     const columnCards = container.querySelectorAll('.task');
-    
+
     columnCards.forEach((card, index) => {
       const numberElement = card.querySelector('.task-number');
       if (numberElement) {
@@ -44,45 +44,80 @@ function renumberCards() {
     });
   });
 }
+let selectedCard = null;
 
+const dropBoxes = document.querySelectorAll('.to-do, .in-progress, .completed');
+
+dropBoxes.forEach(box => {
+  box.addEventListener('dragover', e => {
+    e.preventDefault();
+  });
+
+  box.addEventListener('drop', e => {
+    e.preventDefault();
+    if (selectedCard) {
+      box.appendChild(selectedCard);
+    }
+  });
+});
+
+// Task Creator
 function createTaskElement(category) {
   const newTask = document.createElement('div');
   newTask.classList.add('task');
   newTask.dataset.category = category;
 
+  newTask.setAttribute('draggable', 'true');
+
   newTask.innerHTML = `
-    <div class="up-bar">
-       <p class="task-number"></p>
-      <button class="trash-button">
-        <span class="material-symbols-outlined icon">delete</span>
-      </button>
-    </div>
-    <textarea placeholder="type here..." class="text" rows="1"></textarea>
-    <div class="activity-bar">
-      <button class="flag-button">
-        <span class="material-symbols-outlined icon">flag</span>
-      </button>
-      <div class="date-bar">
-        <span class="material-symbols-outlined icon">alarm</span>
-        <textarea class="date" rows="1" placeholder="4 Oct"></textarea>
+    <div class="card">
+      <div class="up-bar">
+        <p class="task-number"></p>
+        <button class="trash-button">
+          <span class="material-symbols-outlined icon">delete</span>
+        </button>
+      </div>
+      <textarea placeholder="type here..." class="text" rows="1"></textarea>
+      <div class="activity-bar">
+        <button class="flag-button">
+          <span class="material-symbols-outlined icon">flag</span>
+        </button>
+        <div class="date-bar">
+          <span class="material-symbols-outlined icon">alarm</span>
+          <textarea class="date" rows="1" placeholder="4 Oct"></textarea>
+        </div>
       </div>
     </div>
   `;
 
-  // Auto-resize textarea logic
+  // Drag nad Drop
+  newTask.addEventListener('dragstart', e => {
+    if (['TEXTAREA', 'BUTTON', 'SPAN'].includes(e.target.tagName)) {
+      return; 
+    }
+    selectedCard = newTask;
+    newTask.classList.add('dragging');
+  });
+
+  newTask.addEventListener('dragend', () => {
+    selectedCard = null;
+    newTask.classList.remove('dragging');
+  });
+
+  // Auto Resize Text Area
   const textEntered = newTask.querySelector('.text');
   textEntered.addEventListener('input', function () {
     this.style.height = 'auto';
     this.style.height = this.scrollHeight + 'px';
   });
 
-  // Single combined delete button listener
+  // Delete Button
   const deleteButton = newTask.querySelector('.trash-button');
   deleteButton.addEventListener('click', () => {
     newTask.remove();
     counts[category] = Math.max(0, counts[category] - 1);
     updateDisplay(category);
-    renumberCards(); // Update task numbers after removal
+    renumberCards(); 
   });
 
   return newTask;
@@ -105,7 +140,7 @@ Object.keys(addButtons).forEach(category => {
 
       counts[category] += 1;
       updateDisplay(category);
-      renumberCards(); // Update task numbers when new card is added
+      renumberCards();
     });
   }
 });
