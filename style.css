@@ -189,7 +189,7 @@ html {
 .flag-button,
 .add-button,
 .toggle-button,
-.ratio-button {
+.delete-button {
   background-color: transparent;
   outline: none;
   border: none;
@@ -201,7 +201,7 @@ html {
 .flag-button:hover,
 .add-button:hover,
 .toggle-button:hover,
-.ratio-button:hover {
+.delete-button:hover {
   cursor: pointer;
 }
 
@@ -209,7 +209,7 @@ html {
 .flag-button:active,
 .add-button:active,
 .toggle-button:active,
-.ratio-button:active {
+.delete-button:active {
   outline: none;
   opacity: 0.5;
   border: none;
@@ -232,7 +232,7 @@ html {
   top: var(--spacing-lg);
   right: var(--spacing-lg);
 }
-.ratio-button {
+.delete-button {
   position: absolute;
   z-index: 10;
   top: var(--spacing-lg);
