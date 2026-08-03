@@ -124,6 +124,12 @@ function createTaskElement(category) {
   const resetButton = document.querySelector('.delete-button');
   resetButton.addEventListener('click', () => {
     newTask.remove();
+    
+  document.querySelector('.numberToDo').innerHTML = '';
+  document.querySelector('.numberInProgress').innerHTML = '';
+  document.querySelector('.numberCompleted').innerHTML = '';
+
+
   });
 
   return newTask;
