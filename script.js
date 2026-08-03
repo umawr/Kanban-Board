@@ -70,7 +70,7 @@ function createTaskElement(category) {
   newTask.setAttribute('draggable', 'true');
 
   newTask.innerHTML = `
-    <div class="card">
+   <div class="card">
       <div class="up-bar">
         <p class="task-number"></p>
         <button class="trash-button">
@@ -93,7 +93,7 @@ function createTaskElement(category) {
   // Drag nad Drop
   newTask.addEventListener('dragstart', e => {
     if (['TEXTAREA', 'BUTTON', 'SPAN'].includes(e.target.tagName)) {
-      return; 
+      return;
     }
     selectedCard = newTask;
     newTask.classList.add('dragging');
@@ -111,13 +111,19 @@ function createTaskElement(category) {
     this.style.height = this.scrollHeight + 'px';
   });
 
-  // Delete Button
+  // Trash Button
   const deleteButton = newTask.querySelector('.trash-button');
   deleteButton.addEventListener('click', () => {
     newTask.remove();
     counts[category] = Math.max(0, counts[category] - 1);
     updateDisplay(category);
-    renumberCards(); 
+    renumberCards();
+  });
+
+  // Delete all
+  const resetButton = document.querySelector('.delete-button');
+  resetButton.addEventListener('click', () => {
+    newTask.remove();
   });
 
   return newTask;
