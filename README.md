@@ -3,9 +3,8 @@
 This is my cleanest design yet, and I'm really proud of my CSS work,  
 I still need to learn a lot of JavaScript because this project took a  
 lot of help.
-Currently the button at the top left corner doesn't do anything but  
-I did program it to change the size, but I think most people would never  
-use it.  
+There are still some bugs regarding how tasks are re calculated, but I still  
+have to figure out how to ?
 I'll make a YouTube video on how I made this.  
    
 My Channel-  
