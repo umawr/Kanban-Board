@@ -1,0 +1,27 @@
+---
+config:
+  layout: elk
+  theme: dark
+---
+flowchart TD
+  Start([User Opens App]) --> Toggle{Toggle Dark Mode?}
+  Toggle -->|Yes| DarkMode[Apply Dark Mode]
+  Toggle -->|No| LightMode[Keep Light Mode]
+  DarkMode --> ViewBoard[View Kanban Board]
+  LightMode --> ViewBoard
+  ViewBoard --> UserAction{User Action}
+  UserAction -->|Add Task| SelectColumn[Select Column]
+  UserAction -->|Delete Task| DeleteTask[Remove Task from Column]
+  UserAction -->|Delete All| DeleteAll[Clear All Tasks]
+  UserAction -->|Drag Task| DragTask[Drag Task Between Columns]
+  SelectColumn --> CreateTask[Create New Task Element]
+  CreateTask --> UpdateCount[Increment Column Count]
+  UpdateCount --> RenumberCards[Renumber Cards in Column]
+  RenumberCards --> ViewBoard
+  DeleteTask --> UpdateCount2[Decrement Column Count]
+  UpdateCount2 --> RenumberCards
+  DeleteAll --> ResetCounts[Reset All Counts to 0]
+  ResetCounts --> ViewBoard
+  DragTask --> AppendTask[Move Task to New Column]
+  AppendTask --> RenumberCards
+  RenumberCards --> ViewBoard
