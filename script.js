@@ -44,6 +44,8 @@ function renumberCards() {
     });
   });
 }
+
+
 let selectedCard = null;
 
 const dropBoxes = document.querySelectorAll('.to-do, .in-progress, .completed');
@@ -57,6 +59,7 @@ dropBoxes.forEach(box => {
     e.preventDefault();
     if (selectedCard) {
       box.appendChild(selectedCard);
+      renumberCards()
     }
   });
 });
@@ -120,17 +123,19 @@ function createTaskElement(category) {
     renumberCards();
   });
 
-  // Delete all
+  // Delete All
   const resetButton = document.querySelector('.delete-button');
-  resetButton.addEventListener('click', () => {
-    newTask.remove();
-    
-  document.querySelector('.numberToDo').innerHTML = '';
-  document.querySelector('.numberInProgress').innerHTML = '';
-  document.querySelector('.numberCompleted').innerHTML = '';
+  resetButton.onclick = () => {
+    document.querySelectorAll('.task').forEach(task => task.remove());
 
+    document.querySelector('.numberToDo').textContent = '0';
+    document.querySelector('.numberInProgress').textContent = '0';
+    document.querySelector('.numberCompleted').textContent = '0';
 
-  });
+    counts.toDo = 0;
+    counts.inProgress = 0;
+    counts.completed = 0;
+  };
 
   return newTask;
 }
@@ -152,7 +157,10 @@ Object.keys(addButtons).forEach(category => {
 
       counts[category] += 1;
       updateDisplay(category);
-      renumberCards();
+      // renumberCards();
     });
   }
+});
+document.addEventListener('click', () => {
+  renumberCards();
 });
