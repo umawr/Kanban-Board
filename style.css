@@ -88,6 +88,8 @@ html {
   padding: var(--spacing-md);
   border-radius: var(--radius-lg);
   cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .task {
