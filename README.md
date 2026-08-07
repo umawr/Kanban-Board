@@ -1,10 +1,10 @@
 # Nazar  
 (meaning view in Urdu)  
-This is my cleanest design yet, and I'm really proud of my CSS work,  
+This is my cleanest design yet, and my CSS work is neat,  
 I still need to learn a lot of JavaScript because this project took a  
 lot of help.
 There are still some bugs regarding how tasks are re calculated, but I still  
-have to figure out how to ?
+have to figure out how to fix em?
 I'll make a YouTube video on how I made this.  
    
 My Channel-  
